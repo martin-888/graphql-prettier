@@ -1,6 +1,6 @@
-const parser = require('graphql/language/parser');
-const printer = require('graphql/language/printer');
-const kinds = require('graphql/language/kinds').Kind;
+import { parse } from 'graphql/language/parser';
+import { print } from 'graphql/language/printer';
+import { Kind } from 'graphql/language/kinds';
 
 const isSelectionsEmpty = (node) =>
   !node.selectionSet ||
@@ -16,10 +16,10 @@ const removeDuplicatedLeafNodes = (sourceNode) => {
 
   newNode.selectionSet.selections = newNode.selectionSet.selections
     .filter((selection, index, self) =>
-      selection.kind !== kinds.FIELD ||
+      selection.kind !== Kind.FIELD ||
       selection.selectionSet ||
       index === self.findIndex(selection2 =>
-      selection2.kind === kinds.FIELD &&
+      selection2.kind === Kind.FIELD &&
       selection.name.value === selection2.name.value))
     .map(removeDuplicatedLeafNodes);
 
@@ -49,7 +49,7 @@ const mergeDuplicatedNotLeafNodes = (sourceNode) => {
 
   newNode.selectionSet.selections = newNode.selectionSet.selections
     .filter((selection, index, self) => {
-      if (selection.kind !== kinds.FIELD) {
+      if (selection.kind !== Kind.FIELD) {
         return true;
       }
 
@@ -96,7 +96,7 @@ const replaceFragments = (sourceNode, fragments) => {
 
   newNode.selectionSet.selections = newNode.selectionSet.selections
     .filter(selection => {
-      if (selection.kind !== kinds.FRAGMENT_SPREAD) {
+      if (selection.kind !== Kind.FRAGMENT_SPREAD) {
         return true;
       }
 
@@ -128,14 +128,14 @@ const replaceFragments = (sourceNode, fragments) => {
 };
 
 const prettify = (source, noDuplicates = true) => {
-  const document = parser.parse(source);
+  const document = parse(source);
 
   const fragments = document.definitions
-    .filter(node => node.kind === kinds.FRAGMENT_DEFINITION)
+    .filter(node => node.kind === Kind.FRAGMENT_DEFINITION)
     .map((node, _, self) => replaceFragments(node, self));
 
   return document.definitions
-    .filter(node => node.kind === kinds.OPERATION_DEFINITION)
+    .filter(node => node.kind === Kind.OPERATION_DEFINITION)
     .map(operationNode => {
       let newOperationNode = { ...operationNode };
 
@@ -149,8 +149,8 @@ const prettify = (source, noDuplicates = true) => {
 
       return newOperationNode;
     })
-    .map(printer.print)
+    .map(print)
     .join('\n');
 };
 
-exports.default = prettify;
+export default prettify;
