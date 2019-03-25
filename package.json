@@ -2,6 +2,7 @@
   "name": "graphql-prettier",
   "version": "1.0.2",
   "description": "Prettify & simplify GraphQL query/mutation/subscription.",
+  "keywords": ["graphql", "formatter", "prettier"],
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel ./src -d ./lib",
