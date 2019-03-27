@@ -1,6 +1,6 @@
 {
   "name": "graphql-prettier",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Prettify & simplify GraphQL query/mutation/subscription.",
   "keywords": [
     "graphql",
