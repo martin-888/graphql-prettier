@@ -11,8 +11,8 @@
   "scripts": {
     "build": "babel ./src -d ./lib",
     "lint": "eslint ./src",
-    "prepublishOnly": "npm run build",
-    "test": "nyc mocha ./src/**/*.test.js --require @babel/register"
+    "test": "nyc mocha ./src/**/*.test.js --require @babel/register",
+    "test-with-coverage": "nyc --reporter=lcov mocha ./src/**/*.test.js --require @babel/register -- -R spec && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage"
   },
   "repository": "Emetrop/graphql-prettier",
   "author": {
@@ -28,6 +28,7 @@
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/register": "^7.4.0",
+    "codacy-coverage": "^3.4.0",
     "eslint": "^5.15.1",
     "mocha": "^6.0.2",
     "nyc": "^13.3.0"
