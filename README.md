@@ -1,4 +1,4 @@
-# GraphQL Prettier [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2893bfd204af465eb24e27e01efd6be1)](https://www.codacy.com/app/Emetrop/graphql-prettier) [![Build Status](https://travis-ci.org/Emetrop/graphql-prettier.svg?branch=master)](https://travis-ci.org/Emetrop/graphql-prettier)
+# GraphQL Prettier [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2893bfd204af465eb24e27e01efd6be1)](https://www.codacy.com/app/Emetrop/graphql-prettier) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/2893bfd204af465eb24e27e01efd6be1)](https://www.codacy.com/app/Emetrop/graphql-prettier) [![Build Status](https://travis-ci.org/Emetrop/graphql-prettier.svg?branch=master)](https://travis-ci.org/Emetrop/graphql-prettier)
 
 Prettify & simplify GraphQL query/mutation/subscription.
 
@@ -42,7 +42,7 @@ fragment userFragment on User {
 }
 `;
 
-const prettyfiedQuery = gqlPrettier(query); // returns string
+const prettifiedQuery = gqlPrettier(query); // returns string
 ```
 
 ## Example
