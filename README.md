@@ -12,7 +12,7 @@ prettify(source: string, noDuplicates = true): string
 
 `source` is a string with GraphQL query/mutation/subscription to prettify
 
-`noDuplicates` is a boolean value which set up to false turns out function to leaving duplicated fields
+`noDuplicates` is a boolean value which set up to false turns out the function to not removing duplicated fields
 
 ## Install
 
